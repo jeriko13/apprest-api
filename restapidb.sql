@@ -1,13 +1,14 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Sep 01, 2020 at 02:53 AM
--- Server version: 10.4.13-MariaDB
--- PHP Version: 7.3.19
+-- Host: 127.0.0.1
+-- Waktu pembuatan: 28 Apr 2021 pada 09.55
+-- Versi server: 10.4.11-MariaDB
+-- Versi PHP: 7.4.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -24,7 +25,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `akses_token`
+-- Struktur dari tabel `akses_token`
 --
 
 CREATE TABLE `akses_token` (
@@ -35,7 +36,7 @@ CREATE TABLE `akses_token` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `akses_token`
+-- Dumping data untuk tabel `akses_token`
 --
 
 INSERT INTO `akses_token` (`id_akses_token`, `id_user`, `access_token`, `ip_address`) VALUES
@@ -470,7 +471,7 @@ INSERT INTO `akses_token` (`id_akses_token`, `id_user`, `access_token`, `ip_addr
 -- --------------------------------------------------------
 
 --
--- Table structure for table `krs`
+-- Struktur dari tabel `krs`
 --
 
 CREATE TABLE `krs` (
@@ -481,7 +482,7 @@ CREATE TABLE `krs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `krs`
+-- Dumping data untuk tabel `krs`
 --
 
 INSERT INTO `krs` (`id_krs`, `tanggal_krs`, `id_matakuliah`, `id_mahasiswa`) VALUES
@@ -495,7 +496,7 @@ INSERT INTO `krs` (`id_krs`, `tanggal_krs`, `id_matakuliah`, `id_mahasiswa`) VAL
 -- --------------------------------------------------------
 
 --
--- Table structure for table `mahasiswa`
+-- Struktur dari tabel `mahasiswa`
 --
 
 CREATE TABLE `mahasiswa` (
@@ -506,22 +507,29 @@ CREATE TABLE `mahasiswa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `mahasiswa`
+-- Dumping data untuk tabel `mahasiswa`
 --
 
 INSERT INTO `mahasiswa` (`id_mahasiswa`, `nim`, `nama`, `jurusan`) VALUES
+(1, 1903040012, 'Jeri Riswanto', 'Teknik Informatika'),
+(2, 1903040013, 'Isma Nur Fitri', 'Teknik Informatika'),
 (3, 190704060, 'Latifah Iriyani', 'Sistem Informasi'),
 (4, 190704061, 'Fia Anisa', 'Sistem Informasi'),
 (5, 190704062, 'Axel Haryanto', 'Sistem Informasi'),
 (6, 190704063, 'Muhammad Anandra', 'Sistem Informasi'),
 (7, 190704064, 'Nicholas Saputra', 'Sistem Informasi'),
 (8, 190704065, 'Angel Merici', 'Sistem Informasi'),
-(9, 190704066, 'Nadia Nathania', 'Sistem Informasi');
+(9, 190704066, 'Nadia Nathania', 'Sistem Informasi'),
+(10, 1903040011, 'Mahendra Rio', 'Teknik Informatika'),
+(11, 1903040018, 'Faris Maulana', 'Teknik Informatika'),
+(12, 1903040020, 'Resta Ananda', 'Teknik Informatika'),
+(13, 1903040014, 'Muhammad Ridwan', 'Teknik Informatika'),
+(14, 1903040001, 'Aldiyansyah', 'Teknik Informatika');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `matakuliah`
+-- Struktur dari tabel `matakuliah`
 --
 
 CREATE TABLE `matakuliah` (
@@ -531,7 +539,7 @@ CREATE TABLE `matakuliah` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `matakuliah`
+-- Dumping data untuk tabel `matakuliah`
 --
 
 INSERT INTO `matakuliah` (`id_matakuliah`, `matakuliah`, `sks`) VALUES
@@ -545,7 +553,7 @@ INSERT INTO `matakuliah` (`id_matakuliah`, `matakuliah`, `sks`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `tb_nilai`
+-- Struktur dari tabel `tb_nilai`
 --
 
 CREATE TABLE `tb_nilai` (
@@ -559,7 +567,7 @@ CREATE TABLE `tb_nilai` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `tb_nilai`
+-- Dumping data untuk tabel `tb_nilai`
 --
 
 INSERT INTO `tb_nilai` (`id_nilai`, `id_mahasiswa`, `id_matakuliah`, `nilai_uts`, `nilai_uas`, `nilai_tugas`, `nilai_kehadiran`) VALUES
@@ -569,7 +577,7 @@ INSERT INTO `tb_nilai` (`id_nilai`, `id_mahasiswa`, `id_matakuliah`, `nilai_uts`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -583,7 +591,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`, `tanggal_daftar`, `isVerified`) VALUES
@@ -600,14 +608,14 @@ INSERT INTO `user` (`id`, `username`, `email`, `password`, `role`, `tanggal_daft
 --
 
 --
--- Indexes for table `akses_token`
+-- Indeks untuk tabel `akses_token`
 --
 ALTER TABLE `akses_token`
   ADD PRIMARY KEY (`id_akses_token`),
   ADD KEY `id_user` (`id_user`);
 
 --
--- Indexes for table `krs`
+-- Indeks untuk tabel `krs`
 --
 ALTER TABLE `krs`
   ADD PRIMARY KEY (`id_krs`),
@@ -615,19 +623,19 @@ ALTER TABLE `krs`
   ADD KEY `id_matakuliah` (`id_matakuliah`);
 
 --
--- Indexes for table `mahasiswa`
+-- Indeks untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
   ADD PRIMARY KEY (`id_mahasiswa`);
 
 --
--- Indexes for table `matakuliah`
+-- Indeks untuk tabel `matakuliah`
 --
 ALTER TABLE `matakuliah`
   ADD PRIMARY KEY (`id_matakuliah`);
 
 --
--- Indexes for table `tb_nilai`
+-- Indeks untuk tabel `tb_nilai`
 --
 ALTER TABLE `tb_nilai`
   ADD PRIMARY KEY (`id_nilai`),
@@ -635,70 +643,70 @@ ALTER TABLE `tb_nilai`
   ADD KEY `id_matakuliah` (`id_matakuliah`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `akses_token`
+-- AUTO_INCREMENT untuk tabel `akses_token`
 --
 ALTER TABLE `akses_token`
   MODIFY `id_akses_token` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=444;
 
 --
--- AUTO_INCREMENT for table `krs`
+-- AUTO_INCREMENT untuk tabel `krs`
 --
 ALTER TABLE `krs`
   MODIFY `id_krs` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `mahasiswa`
+-- AUTO_INCREMENT untuk tabel `mahasiswa`
 --
 ALTER TABLE `mahasiswa`
-  MODIFY `id_mahasiswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id_mahasiswa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
--- AUTO_INCREMENT for table `matakuliah`
+-- AUTO_INCREMENT untuk tabel `matakuliah`
 --
 ALTER TABLE `matakuliah`
   MODIFY `id_matakuliah` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
--- AUTO_INCREMENT for table `tb_nilai`
+-- AUTO_INCREMENT untuk tabel `tb_nilai`
 --
 ALTER TABLE `tb_nilai`
   MODIFY `id_nilai` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `user`
+-- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `akses_token`
+-- Ketidakleluasaan untuk tabel `akses_token`
 --
 ALTER TABLE `akses_token`
   ADD CONSTRAINT `akses_token_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `krs`
+-- Ketidakleluasaan untuk tabel `krs`
 --
 ALTER TABLE `krs`
   ADD CONSTRAINT `krs_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `krs_ibfk_2` FOREIGN KEY (`id_matakuliah`) REFERENCES `matakuliah` (`id_matakuliah`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `tb_nilai`
+-- Ketidakleluasaan untuk tabel `tb_nilai`
 --
 ALTER TABLE `tb_nilai`
   ADD CONSTRAINT `tb_nilai_ibfk_1` FOREIGN KEY (`id_mahasiswa`) REFERENCES `mahasiswa` (`id_mahasiswa`) ON DELETE CASCADE ON UPDATE CASCADE,
